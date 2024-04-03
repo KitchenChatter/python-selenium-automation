@@ -13,22 +13,17 @@ driver = webdriver.Chrome(service=service)
 driver.maximize_window()
 
 # open the url
-driver.get('https://www.google.com/')
+driver.get('https://www.target.com/')
 
-# populate search field
-search = driver.find_element(By.NAME, 'q')
-search.clear()
-search.send_keys('doordash')
+# Enter 'coffee' in search field
+driver.find_element(By.ID, 'search').send_keys('coffee')
+# Click search btn
+driver.find_element(By.XPATH, "//button[@data-test='@web/Search/SearchButton']").click()
 
-# wait for 4 sec
-sleep(4)
-
-# click search button
-driver.find_element(By.NAME, 'btnK').click()
-
-# verify search results
-assert 'doordash' in driver.current_url.lower(), f"Expected query not in {driver.current_url.lower()}"
-print('Test Passed')
-# wait for 4 sec
 sleep(6)
+
+# Verification
+actual_text = driver.find_element(By.XPATH, "//div[@data-test='resultsHeading']").text
+assert 'coffee' in actual_text, f'Error! Text coffee not in {actual_text}'
+
 driver.quit()
