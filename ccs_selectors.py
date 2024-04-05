@@ -31,7 +31,7 @@ driver.find_element(By.CSS_SELECTOR, "#twotabsearchtextbox.nav-input[placeholder
 driver.find_element(By.CSS_SELECTOR, "input[placeholder='Search Amazon'][type='text']")
 # Contains: *=
 driver.find_element(By.CSS_SELECTOR, "a[href*='topnav_lang']")
-# from target, contains: *= for a class
-driver.find_element(By.CSS_SELECTOR, "h1[class*='StyledHeading']")
+
+
 
 # Note: CSS does NOT support text, for text we use Xpaths.
